@@ -45,6 +45,8 @@ const vm = new Vue({
               'message': ''
             }
             self.loading = false
+            setTimeout(function(){ location.reload(); }, 1000);
+            
           }
         ).catch((e) => {
           this.$message({ message: 'Ocorreu um problema no envio da mensagem, tente novamente mais tarde.', type: 'warning' })
