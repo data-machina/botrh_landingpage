@@ -7,9 +7,48 @@ const vm = new Vue({
         message: '',
       },
       loading: false,
+      newsletter: ''
     },
   mounted() {},
   methods: {
+    sendNewsletter() {
+      var self = this
+      this.loading = true
+      if (!this.checkNewsletter()) {
+        this.$message({ message: 'Preencha corretamente seu email.', type: 'warning' })
+        this.loading = false
+        return
+      } else {
+
+        let body = '<h3>[NEWSLETTER] Mensagem recebida pela DATASQUAD Landingpage:</h3><hr/>'
+        body += `<p><b>Email</b>: ${this.newsletter}</p>`
+        body += '<hr/><b>Porfavor, não responda à este email.</b>'
+
+        let subject = `[DATASQUAD Landingpage - Newsletter] - ${this.newsletter}`
+        
+        // INSEGURO
+        Email.send({
+          Host: "smtp.gmail.com",
+          Username : "noreplydatamachina@gmail.com",
+          Password : "contato123",
+          To : 'contato@datamachina.com.br',
+          From : "noreplydatamachina@gmail.com",
+          Subject : subject,
+          Body : body,
+        }).then(
+          message => {
+            this.$message({ message: 'Email registrado com sucesso!', type: 'success' })
+            self.newsletter = ''
+            self.loading = false
+            setTimeout(function(){ location.reload(); }, 1000);
+          }
+        ).catch((e) => {
+          this.$message({ message: 'Ocorreu um problema no envio do email, tente novamente mais tarde.', type: 'warning' })
+          self.loading = false
+        })
+      }
+    },
+
     sendEmail() { 
       var self = this
       this.loading = true
@@ -19,13 +58,13 @@ const vm = new Vue({
         return
       } else {
 
-        let body = '<h3>Mensagem recebida pela COLABOT Landingpage:</h3><hr/>'
+        let body = '<h3>Mensagem recebida pela DATASQUAD Landingpage:</h3><hr/>'
         body += `<p><b>Nome</b>: ${this.form.name}</p>`
         body += `<p><b>Email</b>: ${this.form.email}</p>`
         body += `<p><b>Mensagem</b>: ${this.form.message}</p>`
         body += '<hr/><b>Porfavor, não responda à este email.</b>'
 
-        let subject = `[COLABOT Landingpage] - ${this.form.name}`
+        let subject = `[DATASQUAD Landingpage] - ${this.form.name}`
         
         // INSEGURO
         Email.send({
@@ -59,6 +98,12 @@ const vm = new Vue({
         if (this.form.email.indexOf('@') > 0 && this.form.email.indexOf('@') < this.form.email.length-1) {
           return true
         }
+      }
+      return false
+    },
+    checkNewsletter() {
+      if (this.newsletter.indexOf('@') > 0 && this.newsletter.indexOf('@') < this.newsletter.length-1) {
+        return true
       }
       return false
     }

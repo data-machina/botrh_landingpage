@@ -306,14 +306,14 @@ http://www.templatemo.com/tm-492-app-starter
                               <p class="wow fadeInUp" data-wow-delay="0.5s">Coloque aqui o seu e-mail que te retornaremos para conversarmos sobre a nossa solução.</p>
                          </div>
                          <div class="wow fadeInUp newsletter-form" data-wow-delay="0.8s">
-                              <form action="#" method="post">
+                              <div>
                                    <div class="col-md-8 col-sm-7">
-                                        <input name="email" type="email" class="form-control" id="email" placeholder="Seu e-mail aqui">
+                                        <input v-model="newsletter" name="email" type="email" class="form-control" id="email" placeholder="Seu e-mail aqui">
                                    </div>
                                    <div class="col-md-4 col-sm-5">
-                                        <input name="submit" type="submit" class="form-control" id="submit" value="Entre em contato">
+                                        <input @click="sendNewsletter" name="submit" type="submit" class="form-control" id="submit" value="Entre em contato">
                                    </div>
-                              </form>
+                              </div>
                          </div>
                     </div>
 
