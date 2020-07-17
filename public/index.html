@@ -388,6 +388,30 @@ http://www.templatemo.com/tm-492-app-starter
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="js/app.js"></script>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB56BaBr1zIDMpGFQhcPTwYdJelroJ1RAA",
+    authDomain: "datasquad-landingpage.firebaseapp.com",
+    databaseURL: "https://datasquad-landingpage.firebaseio.com",
+    projectId: "datasquad-landingpage",
+    storageBucket: "datasquad-landingpage.appspot.com",
+    messagingSenderId: "746531009001",
+    appId: "1:746531009001:web:b1e9e93eb5f7f9a4c09b78",
+    measurementId: "G-60LV1G1224"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
 
 </body>
 </html>
