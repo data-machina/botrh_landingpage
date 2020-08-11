@@ -16,11 +16,6 @@ Caso não esteja no projeto correto, utilize o comando:
 firebase use datasquad-landingpage
 ```
 
-### Compile o projeto
-```
-npm run build
-```
-
 ### Faça o deploy
 ```
 firebase deploy --only hosting
