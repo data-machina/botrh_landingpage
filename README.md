@@ -1,3 +1,26 @@
+## Project deploy
+
+### Verifique se está utilizando o projeto correto
 ```
-firebase deploy --only hosting:datasquad
+firebase projects:list
 ```
+Resposta:
+| Project Display Name        | Project ID | Project Number |Resource Location ID |
+| ------------- | ------------- | ------------- |-----:|
+| ...      |  ... | ... | ... |
+| datasquad-landingpage     |  **datasquad-landingpage (current)** | 746531009001 | [Not specified] |
+| ...      |  ... | ... | ... |
+
+Caso não esteja no projeto correto, utilize o comando:
+```
+firebase use datasquad-landingpage
+```
+
+### Compile o projeto
+```
+npm run build
+```
+
+### Faça o deploy
+```
+firebase deploy --only hosting
